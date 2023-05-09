@@ -1,4 +1,4 @@
-name: Generate Snake
+name: Generate Img
 on:
   schedule:
     - cron: "0 */6 * * *"
@@ -12,13 +12,20 @@ jobs:
         with:
           ref: output
 
-      - uses: Platane/snk@master
+      - name: Generate Snake
+        uses: Platane/snk@master
         id: snake-gif
         with:
           github_user_name: henry-hub
           # these next 2 lines generate the files on a branch called "output". This keeps the main branch from cluttering up.
           gif_out_path: github-contribution-grid-snake.gif
           svg_out_path: github-contribution-grid-snake.svg
+          
+      - name: GitHub-Profile-3D-Contrib
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: henry-hub
 
       - name: Commit & Push
         run: |
