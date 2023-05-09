@@ -20,8 +20,10 @@ jobs:
           gif_out_path: github-contribution-grid-snake.gif
           svg_out_path: github-contribution-grid-snake.svg
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: output
+      - name: Commit & Push
+        run: |
+          git config user.name henry-fork
+          git config user.email henry_box@163.com
+          git add -A .
+          git status
+          git commit -m 'Actions auto update' && git push -f origin ${SUBMMIT_BRANCH} || echo "No changes to commit"
