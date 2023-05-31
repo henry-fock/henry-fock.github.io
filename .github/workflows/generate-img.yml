@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: output
 
       - name: Generate Snake
         uses: Platane/snk@master
@@ -41,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: output
+          ref: main
 
       - uses: lowlighter/metrics@latest
         with:
